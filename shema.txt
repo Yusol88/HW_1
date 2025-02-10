@@ -1,0 +1,55 @@
+ml-service-app/
+├── app/
+│   ├── __init__.py
+│   ├── core/                  # Ядро системы
+│   │   ├── entities/          # Сущности предметной области
+│   │   │   ├── user.py        # User, Admin
+│   │   │   ├── transaction.py # Transaction и наследники
+│   │   │   ├── ml_model.py    # MLModel
+│   │   │   └── task.py        # PredictionTask
+│   │   │
+│   │   ├── services/          # Бизнес-логика
+│   │   │   ├── auth.py        # Аутентификация
+│   │   │   ├── finance.py     # Управление балансом
+│   │   │   └── ml_service.py  # Работа с ML задачами
+│   │   │
+│   │   └── exceptions.py      # Кастомные исключения
+│   │
+│   ├── api/                   # Внешние интерфейсы
+│   │   ├── rest/              # REST API
+│   │   │   ├── endpoints/
+│   │   │   │   ├── auth.py
+│   │   │   │   ├── users.py
+│   │   │   │   └── tasks.py
+│   │   │   └── main.py        # FastAPI app
+│   │   │
+│   │   └── telegram/          # Telegram бот
+│   │       ├── handlers/
+│   │       └── bot.py
+│   │
+│   ├── workers/               # Фоновые задачи
+│   │   ├── ml_worker.py       # Воркер для ML задач
+│   │   └── task_processor.py  # Обработчик очередей
+│   │
+│   ├── db/                    # Работа с БД
+│   │   ├── repositories/      # Паттерн Repository
+│   │   ├── migrations/        # Миграции (Alembic)
+│   │   └── session.py         # Сессии БД
+│   │
+│   ├── utils/                 # Вспомогательные модули
+│   │   ├── validators.py      # Валидация данных
+│   │   ├── security.py        # Хэширование, JWT
+│   │   └── rabbitmq.py        # Работа с очередями
+│   │
+│   └── config.py              # Конфигурация приложения
+│
+├── tests/                     # Тесты
+│   ├── unit/
+│   └── integration/
+│
+├── docker/                    # Docker конфиги
+│   ├── nginx/
+│   └── postgres/
+│
+├── requirements.txt           # Зависимости
+└── main.py                    # Точка входа
